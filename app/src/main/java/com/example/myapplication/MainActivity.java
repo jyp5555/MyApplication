@@ -5,19 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.myapplication.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView name, phone, address;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        name = findViewById(R.id.name);
-        phone = findViewById(R.id.phone);
-        address = findViewById(R.id.address);
-
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         fetchUserProfile();
     }
 
@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI(UserProfile userProfile){
-        name.setText(userProfile.getName());
-        phone.setText(userProfile.getPhone());
-        address.setText(userProfile.getAddress());
+        binding.name.setText(userProfile.getName());
+        binding.phone.setText(userProfile.getPhone());
+        binding.address.setText(userProfile.getAddress());
     }
 }

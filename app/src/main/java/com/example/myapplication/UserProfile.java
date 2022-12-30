@@ -5,6 +5,8 @@ public class UserProfile {
     private String phone;
     private String address;
     private int gender;
+    public static final int GENDER_MALE = 0;
+    public static final int GENDER_FEMALE = 1;
 
     public UserProfile() {
     }
@@ -40,4 +42,5 @@ public class UserProfile {
     public void setGender(int gender) {
         this.gender = gender;
     }
+
 }

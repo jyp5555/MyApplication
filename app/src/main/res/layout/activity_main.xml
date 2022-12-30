@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="com.example.myapplication.UserProfile"/>
         <variable
             name="userProfile"
             type="com.example.myapplication.UserProfile"/>
@@ -37,7 +38,7 @@
             android:id="@+id/gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{(userProfile.gender == 0) ? &quot;남성&quot; : &quot;여성:&quot; }"/>
+            android:text="@{(userProfile.gender == UserProfile.GENDER_MALE) ? &quot;남성&quot; : &quot;여성:&quot; }"/>
 
     </LinearLayout>
 </layout>

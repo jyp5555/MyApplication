@@ -9,7 +9,6 @@ import com.example.myapplication.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView name, phone, address;
     private ActivityMainBinding binding;
 
     @Override
@@ -27,12 +26,6 @@ public class MainActivity extends AppCompatActivity {
         userProfile.setPhone("02-2222-3333");
         userProfile.setAddress("서울");
 
-        updateUI(userProfile);
-    }
-
-    private void updateUI(UserProfile userProfile){
-        binding.name.setText(userProfile.getName());
-        binding.phone.setText(userProfile.getPhone());
-        binding.address.setText(userProfile.getAddress());
+        binding.setUserProfile(userProfile);
     }
 }

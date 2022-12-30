@@ -4,6 +4,7 @@ public class UserProfile {
     private String name;
     private String phone;
     private String address;
+    private int gender;
 
     public UserProfile() {
     }
@@ -30,5 +31,13 @@ public class UserProfile {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
     }
 }

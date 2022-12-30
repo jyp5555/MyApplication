@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         userProfile.setName("홍길동");
         userProfile.setPhone("02-2222-3333");
         userProfile.setAddress("서울");
-
+        userProfile.setGender(0);
         binding.setUserProfile(userProfile);
     }
 }

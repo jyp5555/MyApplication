@@ -40,5 +40,9 @@
             android:layout_height="wrap_content"
             android:text="@{(userProfile.gender == UserProfile.GENDER_MALE) ? &quot;남성&quot; : &quot;여성:&quot; }"/>
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            imageUrl="@{userProfile.profileImageUrl}"/>
     </LinearLayout>
 </layout>

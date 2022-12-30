@@ -7,6 +7,7 @@ public class UserProfile {
     private int gender;
     public static final int GENDER_MALE = 0;
     public static final int GENDER_FEMALE = 1;
+    private String profileImageUrl;
 
     public UserProfile() {
     }
@@ -43,4 +44,11 @@ public class UserProfile {
         this.gender = gender;
     }
 
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
+
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
+    }
 }

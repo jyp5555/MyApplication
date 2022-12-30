@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         userProfile.setPhone("02-2222-3333");
         userProfile.setAddress("서울");
         userProfile.setGender(0);
+        userProfile.setProfileImageUrl("https://images.pexels.com/photos/13945391/pexels-photo-13945391.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load");
         binding.setUserProfile(userProfile);
     }
 }

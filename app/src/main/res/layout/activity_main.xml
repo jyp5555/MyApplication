@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/name"
@@ -44,5 +45,11 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             imageUrl="@{userProfile.profileImageUrl}"/>
+
+        <Button
+            android:id="@+id/edit_user_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수정" />
     </LinearLayout>
 </layout>

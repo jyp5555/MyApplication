@@ -5,6 +5,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,21 +17,20 @@ import com.example.myapplication.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private MutableLiveData<UserProfile> liveData = new MutableLiveData<>();
-
+    private UserProfileViewModel model;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-
+        model = new ViewModelProvider(this).get(UserProfileViewModel.class);
         setContentView(binding.getRoot());
 
-        if(liveData.getValue() == null){
+        if(model.liveData.getValue() == null){
             fetchUserProfile();
         }
 
-        liveData.observe(this, new Observer<UserProfile>() {
+        model.liveData.observe(this, new Observer<UserProfile>() {
             @Override
             public void onChanged(UserProfile userProfile) {
                 binding.setUserProfile(userProfile);
@@ -50,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
         userProfile.setGender(0);
         userProfile.setProfileImageUrl("https://images.pexels.com/photos/13945391/pexels-photo-13945391.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load");
 
-        liveData.setValue(userProfile);
+        model.liveData.setValue(userProfile);
     }
 
     public void editUserProfile(View view){
-        UserProfile userProfile = liveData.getValue();
+        UserProfile userProfile = model.liveData.getValue();
         Intent intent = new Intent(this, EditUserProfileActivity.class);
         intent.putExtra("phone",userProfile.getPhone());
         intent.putExtra("address",userProfile.getAddress());
@@ -63,13 +63,12 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityResultLauncher<Intent> sendEditInfo = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
         if(result.getResultCode() == Activity.RESULT_OK){
-            UserProfile userProfile = liveData.getValue();
+            UserProfile userProfile = model.liveData.getValue();
             Intent data = result.getData();
             userProfile.setPhone(data.getStringExtra("phone"));
             userProfile.setAddress(data.getStringExtra("address"));
 
-            liveData.setValue(userProfile);
+            model.liveData.setValue(userProfile);
         }
     });
-
 }
